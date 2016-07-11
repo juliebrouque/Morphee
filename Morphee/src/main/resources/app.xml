@@ -8,14 +8,63 @@
 
 
 
-	<!-- Injection Operation Dao 
-	<bean id="dao....."
-		class="com.gestionhotel.gestionhotel....."></bean>
-	<bean id="service....."
-		class="com.gestionhotel.gestionhotel.....">
-		<property name="dao" ref="dao......"></property>
-	</bean> -->
+	<!-- Injection Operation Dao -->
+	<bean id="daoConsommation"
+		class="com.gestionhotel.gestionhotel.dao.consommation.DaoConsommationImplement"></bean>
+	<bean id="serviceConsommation"
+		class="com.gestionhotel.gestionhotel.metier.consommation.MetierConsommationImplement">
+		<property name="dao" ref="daoConsommation"></property>
+	</bean> 
 
+
+	<bean id="daoFacture"
+		class="com.gestionhotel.gestionhotel.dao.factures.DaoFacturesImplement"></bean>
+	<bean id="serviceFacture"
+		class="com.gestionhotel.gestionhotel.metier.factures.MetierFacturesImplement">
+		<property name="dao" ref="daoFacture"></property>
+	</bean> 
+	
+	<bean id="daoHotel"
+		class="com.gestionhotel.gestionhotel.dao.hotel.DaoHotelImplement"></bean>
+	<bean id="serviceHotel"
+		class="com.gestionhotel.gestionhotel.metier.hotel.MetierHotelImplement">
+		<property name="dao" ref="daoHotel"></property>
+	</bean>
+	
+	<bean id="daoPaiement"
+		class="com.gestionhotel.gestionhotel.dao.paiement.DaoPaiementImplement"></bean>
+	<bean id="servicePaiement"
+		class="com.gestionhotel.gestionhotel.metier.paiement.MetierPaiementImplement">
+		<property name="dao" ref="daoPaiement"></property>
+	</bean>
+	
+	<bean id="daoPersonnes"
+		class="com.gestionhotel.gestionhotel.dao.personnes.DaoPersonnesImplement"></bean>
+	<bean id="servicePersonnes"
+		class="com.gestionhotel.gestionhotel.metier.personnes.MetierPersonnesImplement">
+		<property name="dao" ref="daoPersonnes"></property>
+	</bean>
+	
+	<bean id="daoProduit"
+		class="com.gestionhotel.gestionhotel.dao.produit.DaoProduitsImplement"></bean>
+	<bean id="serviceProduit"
+		class="com.gestionhotel.gestionhotel.metier.produit.MetierProduitsImplement">
+		<property name="dao" ref="daoProduit"></property>
+	</bean> 
+	
+	<bean id="daoReservation"
+		class="com.gestionhotel.gestionhotel.dao.reservation.DaoReservationImplement"></bean>
+	<bean id="serviceReservation"
+		class="com.gestionhotel.gestionhotel.metier.reservation.MetierReservationImplement">
+		<property name="dao" ref="daoReservation"></property>
+	</bean>
+	
+	<bean id="daoChambres"
+		class="com.gestionhotel.gestionhotel.daochambres.DaoChambresImplement"></bean>
+	<bean id="serviceChambres"
+		class="com.gestionhotel.gestionhotel.metier.chambres.MetierChambresImplement">
+		<property name="dao" ref="daoChambres"></property>
+	</bean>
 
 	<bean id="datasource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">

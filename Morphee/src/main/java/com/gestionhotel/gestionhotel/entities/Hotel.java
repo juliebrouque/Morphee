@@ -26,8 +26,15 @@ public class Hotel {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long idHotel;
 	private String nomHotel;
-	private String adresseHotel;
 	private Integer classeHotel;
+	private String adresseHotel;
+	private String codePostal;
+	private String pays;
+	private String numTel;
+	private String numFax;
+	private String adresseMail;
+	
+	
 	
 	@OneToMany(mappedBy="hotel")
 	private List<Chambres> tabChambreHotel=new ArrayList<Chambres>();
@@ -110,5 +117,45 @@ public class Hotel {
 	public void setTabFactureHotel(List<Factures> tabFactureHotel) {
 		this.tabFactureHotel = tabFactureHotel;
 	}
-	
+
+	public String getCodePostal() {
+		return codePostal;
+	}
+
+	public void setCodePostal(String codePostal) {
+		this.codePostal = codePostal;
+	}
+
+	public String getPays() {
+		return pays;
+	}
+
+	public void setPays(String pays) {
+		this.pays = pays;
+	}
+
+	public String getNumTel() {
+		return numTel;
+	}
+
+	public void setNumTel(String numTel) {
+		this.numTel = numTel;
+	}
+
+	public String getNumFax() {
+		return numFax;
+	}
+
+	public void setNumFax(String numFax) {
+		this.numFax = numFax;
+	}
+
+	public String getAdresseMail() {
+		return adresseMail;
+	}
+
+	public void setAdresseMail(String adresseMail) {
+		this.adresseMail = adresseMail;
+	}
+
 }

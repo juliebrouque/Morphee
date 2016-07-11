@@ -1,5 +1,11 @@
 package com.gestionhotel.gestionhotel.dao.hotel;
-
+/*
+ * Projet: Morphee
+ * Interface: DaoHotelImplement
+ * Date: 11/07/2016
+ * Version: 1.0.0
+ * Author: Julie Brouqué
+ */
 import java.awt.Window.Type;
 import java.util.ArrayList;
 import java.util.List;
