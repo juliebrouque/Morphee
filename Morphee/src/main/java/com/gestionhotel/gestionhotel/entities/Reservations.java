@@ -1,12 +1,4 @@
 package com.gestionhotel.gestionhotel.entities;
-
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 /*
  * Projet: Morphee
  * Class: Reservation
@@ -14,6 +6,14 @@ import javax.persistence.GenerationType;
  * Version: 1.0.0
  * Author: Julie Brouqué
  */
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+
 
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
