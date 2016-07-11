@@ -120,5 +120,13 @@ public class Chambres {
 		this.nbLitChambre = nbLitChambre;
 	}
 
+	public Integer getNumChambre() {
+		return numChambre;
+	}
+
+	public void setNumChambre(Integer numChambre) {
+		this.numChambre = numChambre;
+	}
+
 	
 }
