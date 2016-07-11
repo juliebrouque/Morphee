@@ -26,6 +26,7 @@ public class Chambres {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long idChambre;
+	private Integer numChambre;
 	private double prixChambre;
 	private double surfaceChambre;
 	private Integer etageChambre;
