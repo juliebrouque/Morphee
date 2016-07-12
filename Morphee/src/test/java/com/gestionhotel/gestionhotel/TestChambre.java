@@ -2,6 +2,11 @@ package com.gestionhotel.gestionhotel;
 
 import static org.junit.Assert.*;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -9,8 +14,14 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.gestionhotel.gestionhotel.entities.Chambres;
 import com.gestionhotel.gestionhotel.metier.chambres.IMetierChambres;
-import com.gestionhotel.gestionhotel.metier.hotel.IMetierHotel;
-
+/**
+ * 
+ * @author Zineb LAMRANI
+ * classe de Test de l'entité Chambre
+ * version 1.0.0
+ * date : 12/07/2016
+ *
+ */
 public class TestChambre {
 	private static IMetierChambres metier;
 	private static ClassPathXmlApplicationContext context;
@@ -25,7 +36,7 @@ public class TestChambre {
 		context.close();
 	}
 
-	@Test
+	/*@Test
 	public void testAddChambreSachantHotel() {
 		Chambres ch1 = new Chambres(18, 45, 30, 1, 1, 1);
 		metier.addChambreSachantHotel(ch1, 1L);
@@ -42,31 +53,47 @@ public class TestChambre {
 		assertNotNull(ch3.getIdChambre());
 		assertNotNull(ch4.getIdChambre());
 		assertNotNull(ch5.getIdChambre());
-	}
+	}*/
 
 	/*@Test
 	public void testDeleteChambre() {
-		fail("Not yet implemented");
+		Chambres ch = metier.getChambreById(3L);
+		metier.deleteChambre(3L);
+		assertNotNull(ch.getIdChambre());
+
 	}
 
 	@Test
 	public void testUpdateChambre() {
-		fail("Not yet implemented");
-	}
+		Chambres ch = metier.getChambreById(2L);
+	//ch.getHotel().setIdHotel(2L);
+	ch.setPrixChambre(180);
+	metier.updateChambre(ch);
 
-	@Test
+	}*/
+
+	/*@Test
 	public void testGetAllChambres() {
-		fail("Not yet implemented");
-	}
+		List<Chambres>listeAllChambres = metier.getAllChambres();
+		for (Chambres chambres : listeAllChambres) {
+			System.out.println("il existe" + listeAllChambres.size()+ "chambres");
+		}
+	}*/
 
-	@Test
+	/*@Test
 	public void testGetChambreById() {
-		fail("Not yet implemented");
-	}
+		Chambres ch=metier.getChambreById(1L);
+		System.out.println("la chambre" +" "+ ch.getIdChambre()+ " "+ "a été récupérée");
+		assertNotNull(ch.getIdChambre());
+	}*/
 
-	@Test
-	public void testGetchambresDisponibles() {
-		fail("Not yet implemented");
+	/*@Test
+	public void testGetchambresDisponibles() throws ParseException {
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		Date dateArrivee = sdf.parse("03/06/2016");
+		Date dateSortie = sdf.parse("22/06/2016");
+		List<Chambres>listeChambresDispo = metier.getchambresDisponibles(dateArrivee, dateSortie);
+		System.out.println("liste des chambres dispo:" +" "+ listeChambresDispo.size());
 	}*/
 
 }
