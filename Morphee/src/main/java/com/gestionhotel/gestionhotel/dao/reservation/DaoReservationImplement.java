@@ -47,7 +47,7 @@ public class DaoReservationImplement implements IDaoReservation{
 		List<Reservations> tabRes=c.getTabReservationChambre();
 		for(Reservations res:tabRes){
 			if((res.getDateArrivee().before(r.getDateArrivee()) && res.getDateSortie().after(r.getDateArrivee())) 
-					|| (res.getDateArrivee().before(r.getDateSortie()) && res.getDateSortie().after(r.getDateSortie()))){
+					|| (res.getDateArrivee().before(r.getDateSortie()) && res.getDateSortie().after(r.getDateSortie())) || res.getDateArrivee().equals(r.getDateArrivee()) || res.getDateSortie().equals(r.getDateSortie())){
 				throw new MyException("Cette chambre est déjà réservée du "+res.getDateArrivee()+" au "+res.getDateSortie());
 			}else{
 				em.persist(r);
@@ -67,7 +67,7 @@ public class DaoReservationImplement implements IDaoReservation{
 	public Reservations getReservation(Long idReservation) {
 		Reservations r=em.find(Reservations.class, idReservation);
 		log.info("La réservation "+r.getIdReservation()+" a bien été récupérée");
-		return null;
+		return r;
 	}
 
 	@Override
@@ -92,10 +92,11 @@ public class DaoReservationImplement implements IDaoReservation{
 		double coutCons=0;
 		for(Consommation c:tabCons){
 			if(c.getReservation().getIdReservation().equals(idReservation)){
-				coutCons=c.getProduit().getPrixProduit();
+				coutCons=coutCons+c.getProduit().getPrixProduit();
 			}
 		}
 		double cout=r.getChambre().getPrixChambre()+coutCons;
+		log.info("Le coût de la réservation"+r.getIdReservation()+" est de "+cout);
 		return cout;
 	}
 
@@ -108,11 +109,12 @@ public class DaoReservationImplement implements IDaoReservation{
 		for(Reservations r:tabRes){
 			List<Consommation> tabCons=r.getTabConsommationreservation();
 			for(Consommation c:tabCons){
-				coutCons=c.getProduit().getPrixProduit();
+				coutCons=coutCons+c.getProduit().getPrixProduit();
 			}
-			coutChambre=r.getChambre().getPrixChambre();
+			coutChambre=coutChambre+r.getChambre().getPrixChambre();
 		}
 		coutReservation=coutChambre+coutCons;
+		log.info("Le coût des réservations est de "+coutReservation);
 		return coutReservation;
 	}
 

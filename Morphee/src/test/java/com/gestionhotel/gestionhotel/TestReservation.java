@@ -40,50 +40,62 @@ public class TestReservation {
 		context.close();
 	}
 	
-	@Test //ok
+	/*@Test //ok
 	public void testAddReservation() throws ParseException, MyException {
 		SimpleDateFormat sdf=new SimpleDateFormat("dd/MM/yyyy");
-		Date madate1=sdf.parse("04/06/2016");
-		Date madate2=sdf.parse("10/06/2016");
+		Date madate1=sdf.parse("02/06/2016");
+		Date madate2=sdf.parse("15/06/2016");
 		Reservations r1=new Reservations(madate1, madate2);
-		metier.addReservation(r1, 1L, 1L, 2L);
+		metier.addReservation(r1, 1L, 1L, 1L);
 		assertNotNull(r1.getIdReservation());
-	}
+	}*/
 
-	/*@Test
+	/*@Test //ok
 	public void testGetReservations() {
 		List<Reservations> tab=metier.getReservations();
 		assertTrue(tab.size()>0);
 	}*/
 
-	/*@Test
+/*	@Test //ok
 	public void testGetReservation() {
-		fail("Not yet implemented");
-	}
+		Reservations r1=metier.getReservation(1L);
+		assertNotNull(r1.getIdReservation());
+	}*/
 
-	@Test
+	/*@Test //ok
 	public void testDeleteReservation() {
-		fail("Not yet implemented");
-	}
+		List<Reservations> tab=metier.getReservations();
+		metier.deleteReservation(2L);
+		List<Reservations> tab2=metier.getReservations();
+		assertTrue(tab.size()!=tab2.size());
+	}*/
 
-	@Test
-	public void testUpdateReservation() {
-		fail("Not yet implemented");
-	}
+	/*@Test //ok
+	public void testUpdateReservation() throws ParseException {
+		Reservations r1=metier.getReservation(1L);
+		SimpleDateFormat sdf=new SimpleDateFormat("dd/MM/yyyy");
+		Date madate1=sdf.parse("15/06/2016");
+		r1.setDateSortie(madate1);
+		metier.updateReservation(r1);
+		Reservations r2=metier.getReservation(1L);
+		assertTrue(r1.getDateSortie()!=r2.getDateSortie());
+	}*/
 
-	@Test
+	/*@Test //ok mais verifier avec consommations
 	public void testCoûtReservation() {
-		fail("Not yet implemented");
-	}
+		double cout=metier.coûtReservation(1L);
+		assertTrue(cout!=0);
+	}*/
 
-	@Test
+/*	@Test //ok mais vérifier avec consommations
 	public void testCoûtReservations() {
-		fail("Not yet implemented");
-	}
+		double coût=metier.coûtReservations();
+		assertTrue(coût!=0);
+	}*/
 
-	@Test
+	/*@Test
 	public void testGetStockProduit() {
 		fail("Not yet implemented");
-	}
-*/
+	}*/
+
 }

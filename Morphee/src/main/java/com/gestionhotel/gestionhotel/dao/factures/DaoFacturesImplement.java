@@ -59,6 +59,7 @@ public class DaoFacturesImplement implements IDaoFactures{
 				tabFac.add(r.getFacture());
 			}
 		}
+		log.info("La liste de factures du client "+p.getIdPersonnes()+" a bien été récupérée");
 		return tabFac;
 	}
 
@@ -74,14 +75,15 @@ public class DaoFacturesImplement implements IDaoFactures{
 			c.setTime(res.getDateSortie());
 			int year = c.get(Calendar.YEAR);
 			if(Année==year){
-				coutChambre=res.getChambre().getPrixChambre();
+				coutChambre=coutChambre+res.getChambre().getPrixChambre();
 				List<Consommation> tabCons=res.getTabConsommationreservation();
 				for(Consommation cons:tabCons){
-					coutCons=cons.getProduit().getPrixProduit();
+					coutCons=coutCons+cons.getProduit().getPrixProduit();
 				}
 			}
 		}
 		coutReservation=coutChambre+coutCons;
+		log.info("Le cout annuel du client "+p.getIdPersonnes()+" est de "+coutReservation);
 		return coutReservation;
 	}
 
@@ -94,14 +96,15 @@ public class DaoFacturesImplement implements IDaoFactures{
 		double coutChambre=0;
 		for(Reservations res:tabRes){
 			if(dateDebut.before(res.getDateArrivee()) && dateFin.after(res.getDateSortie())){
-				coutChambre=res.getChambre().getPrixChambre();
+				coutChambre=coutChambre+res.getChambre().getPrixChambre();
 				List<Consommation> tabCons=res.getTabConsommationreservation();
 				for(Consommation c:tabCons){
-					coutCons=c.getProduit().getPrixProduit();
+					coutCons=coutCons+c.getProduit().getPrixProduit();
 				}
 			}
 		}
-		coutReservation=coutChambre+coutCons;
+		coutReservation= coutReservation+coutChambre+coutCons;
+		log.info("Le cout semestriel du client "+p.getIdPersonnes()+" est de "+coutReservation);
 		return coutReservation;
 	}
 
@@ -109,7 +112,7 @@ public class DaoFacturesImplement implements IDaoFactures{
 	public Factures getFacture(Long idFacture) {
 		Factures f1=em.find(Factures.class, idFacture);
 		log.info("La facture "+f1.getIdFacture()+" a bien été récupérée");
-		return null;
+		return f1;
 	}
 
 }
