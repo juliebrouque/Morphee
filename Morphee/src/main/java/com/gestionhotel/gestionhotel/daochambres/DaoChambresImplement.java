@@ -66,7 +66,7 @@ public class DaoChambresImplement implements IDaoChambres {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Chambres> getAllChambres() {
-		Query query = em.createQuery("Select from Chambres ch");
+		Query query = em.createQuery("from Chambres ");
 		log.info("il existe" + query.getResultList().size()+"chambres");
 		return query.getResultList();
 	}
