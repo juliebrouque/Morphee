@@ -47,12 +47,7 @@ public class Hotel {
 	
 	//Constructors
 	
-	public Hotel(String nomHotel, String adresseHotel, Integer classeHotel) {
-		super();
-		this.nomHotel = nomHotel;
-		this.adresseHotel = adresseHotel;
-		this.classeHotel = classeHotel;
-	}
+	
 
 	public Hotel() {
 		super();
@@ -60,6 +55,21 @@ public class Hotel {
 	}
 
 	
+	public Hotel(String nomHotel, Integer classeHotel, String adresseHotel,
+			String codePostal, String pays, String numTel, String numFax,
+			String adresseMail) {
+		super();
+		this.nomHotel = nomHotel;
+		this.classeHotel = classeHotel;
+		this.adresseHotel = adresseHotel;
+		this.codePostal = codePostal;
+		this.pays = pays;
+		this.numTel = numTel;
+		this.numFax = numFax;
+		this.adresseMail = adresseMail;
+	}
+
+
 	//Get and Set
 	
 	public Long getIdHotel() {
