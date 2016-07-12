@@ -16,6 +16,7 @@ import com.gestionhotel.gestionhotel.entities.Chambres;
 import com.gestionhotel.gestionhotel.entities.Client;
 import com.gestionhotel.gestionhotel.entities.Consommation;
 import com.gestionhotel.gestionhotel.entities.Factures;
+import com.gestionhotel.gestionhotel.entities.Hotel;
 import com.gestionhotel.gestionhotel.entities.Personnes;
 import com.gestionhotel.gestionhotel.entities.Reservations;
 import com.gestionhotel.gestionhotel.exception.MyException;
@@ -37,6 +38,8 @@ public class DaoChambresImplement implements IDaoChambres {
 
 	@Override
 	public Chambres addChambreSachantHotel(Chambres ch, Long idHotel) {
+		Hotel h = em.find(Hotel.class, idHotel);
+		ch.setHotel(h);
 		em.persist(ch);
 		log.info("la chambre numéro:"+" "+ ch.getNumChambre()+"a bien été enregistrée");
 		return ch;
