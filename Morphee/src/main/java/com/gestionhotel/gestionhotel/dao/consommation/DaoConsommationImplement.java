@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 
 import com.gestionhotel.gestionhotel.entities.Consommation;
 import com.gestionhotel.gestionhotel.entities.Produits;
+import com.gestionhotel.gestionhotel.entities.Reservations;
 
 /**
  * 
@@ -16,25 +17,25 @@ import com.gestionhotel.gestionhotel.entities.Produits;
  */
 public class DaoConsommationImplement implements IDaoConsommation{
 Logger log = Logger.getLogger("DaoConsommationImplement");
-private EntityManager em;
-	@Override
-	public Consommation addConsommation(Consommation c) {
-		em.persist(c);
-		log.info("la consommation" + c.getIdConsommation()+ "a bien été enregistrée");
-		return c;
-	}
+
+	private EntityManager em;
 
 	@Override
 	public Consommation addconsommationSachantProduit(Consommation c,
-			Long idProduit) {
+			Long idProduit, Long idReservation) {
 		Produits p = em.find(Produits.class, idProduit);
 		c.setProduit(p);
-		em.persist(c);
+		
+		Integer quantite=c.getProduit().getQuantiteProduit();
+		Reservations r=em.find(Reservations.class, idReservation);
+		c.setReservation(r);
+		r.getTabConsommationreservation().add(c);
+		quantite=quantite-c.getQuantiteConsomee();
+		c.getProduit().setQuantiteProduit(quantite);
+		em.merge(c.getProduit());
+		em.persist(c);		
 		log.info("la consommation " + c.getIdConsommation()+ 
-				"avec le produit" + p.getIdProduit()+"a bien été enregistrée" );
+				"avec le produit" + p.getIdProduit()+"a bien été enregistrée pour la réservation "+r.getIdReservation() );
 		return c;
 	}
-
-	
-
 }

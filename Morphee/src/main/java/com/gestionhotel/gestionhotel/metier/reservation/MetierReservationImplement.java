@@ -35,14 +35,6 @@ public class MetierReservationImplement implements IMetierReservation{
 		return dao.addReservation(r, idClient, idChambre);
 	}
 
-	
-
-	@Override
-	public void addConsommationReservation(Long idConsommation,
-			Long idReservation) {
-		dao.addConsommationReservation(idConsommation, idReservation);
-		
-	}
 
 	@Override
 	public List<Reservations> getReservations() {

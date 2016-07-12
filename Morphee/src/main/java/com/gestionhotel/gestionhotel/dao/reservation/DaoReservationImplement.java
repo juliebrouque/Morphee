@@ -117,19 +117,5 @@ public class DaoReservationImplement implements IDaoReservation{
 		return p.getQuantiteProduit();
 	}
 
-	@Override
-	public void addConsommationReservation(Long idConsommation,
-			Long idReservation) {
-		Consommation c=em.find(Consommation.class, idConsommation);
-		Integer quantite=c.getProduit().getQuantiteProduit();
-		Reservations r=em.find(Reservations.class, idReservation);
-		r.getTabConsommationreservation().add(c);
-		quantite=quantite-1;
-		c.getProduit().setQuantiteProduit(quantite);
-		em.merge(c.getProduit());
-		log.info("La consommation "+c.getIdConsommation()+" a bien été rajoutée à la réservation "+r.getIdReservation());
-		
-		
-	}
 
 }
