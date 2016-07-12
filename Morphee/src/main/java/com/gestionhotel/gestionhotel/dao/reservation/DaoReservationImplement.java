@@ -28,7 +28,7 @@ public class DaoReservationImplement implements IDaoReservation{
 
 	Logger log=Logger.getLogger("DaoReservationImplement");
 	
-	@PersistenceContext //pour instancier l'entityManager
+	@PersistenceContext
 	private EntityManager em;
 	
 	

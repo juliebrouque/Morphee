@@ -3,6 +3,8 @@ package com.gestionhotel.gestionhotel.metier.personnes;
 import java.util.List;
 import java.util.logging.Logger;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import com.gestionhotel.gestionhotel.dao.personnes.IDaoPersonnes;
 import com.gestionhotel.gestionhotel.entities.Personnes;
 
@@ -13,6 +15,7 @@ import com.gestionhotel.gestionhotel.entities.Personnes;
  * Version: 1.0.0
  * Author: Julie Brouqué
  */
+@Transactional
 public class MetierPersonnesImplement implements IMetierPersonne{
 
 	//Attributs

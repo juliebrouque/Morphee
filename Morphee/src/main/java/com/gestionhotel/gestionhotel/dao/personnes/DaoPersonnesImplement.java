@@ -20,7 +20,7 @@ public class DaoPersonnesImplement implements IDaoPersonnes{
 	
 	Logger log=Logger.getLogger("DaoPersonnesImplement");
 	
-	@PersistenceContext //pour instancier l'entityManager
+	@PersistenceContext
 	private EntityManager em;
 
 	@Override

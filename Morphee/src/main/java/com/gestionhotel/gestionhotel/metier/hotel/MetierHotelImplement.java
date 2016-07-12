@@ -3,6 +3,8 @@ package com.gestionhotel.gestionhotel.metier.hotel;
 import java.util.List;
 import java.util.logging.Logger;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import com.gestionhotel.gestionhotel.dao.hotel.IDaoHotel;
 import com.gestionhotel.gestionhotel.entities.Client;
 import com.gestionhotel.gestionhotel.entities.Employes;
@@ -15,6 +17,8 @@ import com.gestionhotel.gestionhotel.exception.MyException;
  * Version: 1.0.0
  * Author: Julie Brouqué
  */
+
+@Transactional
 public class MetierHotelImplement implements IMetierHotel{
 
 	//Attributs 

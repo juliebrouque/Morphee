@@ -2,8 +2,9 @@ package com.gestionhotel.gestionhotel.metier.consommation;
 
 import java.util.logging.Logger;
 
-import com.gestionhotel.gestionhotel.dao.consommation.IDaoConsommation;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.gestionhotel.gestionhotel.dao.consommation.IDaoConsommation;
 import com.gestionhotel.gestionhotel.entities.Consommation;
 
 /*
@@ -13,6 +14,7 @@ import com.gestionhotel.gestionhotel.entities.Consommation;
  * Version: 1.0.0
  * Author: Julie Brouqué
  */
+@Transactional
 public class MetierConsommationImplement implements IMetierConsommation{
 
 	//Attributs

@@ -2,6 +2,7 @@ package com.gestionhotel.gestionhotel.entities;
 
 import java.util.Date;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 /*
@@ -13,6 +14,7 @@ import javax.persistence.Entity;
  */
 
 @Entity
+@DiscriminatorValue("CDI")
 public class Contractuels extends Employes{
 
 	//Attributs

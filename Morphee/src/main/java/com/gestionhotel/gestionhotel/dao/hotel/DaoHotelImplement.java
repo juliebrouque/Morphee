@@ -25,7 +25,7 @@ public class DaoHotelImplement implements IDaoHotel{
 
 	Logger log=Logger.getLogger("DaoHotelImplement");
 	
-	@PersistenceContext //pour instancier l'entityManager
+	@PersistenceContext
 	private EntityManager em;
 	
 	@Override

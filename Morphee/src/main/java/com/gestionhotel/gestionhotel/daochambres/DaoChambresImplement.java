@@ -28,7 +28,9 @@ import com.gestionhotel.gestionhotel.exception.MyException;
 *date: 11/07/2016
  */
 public class DaoChambresImplement implements IDaoChambres {
+	
 	Logger log = Logger.getLogger("DaoChambresImplement");
+	
 	@PersistenceContext
 	private EntityManager em;
 

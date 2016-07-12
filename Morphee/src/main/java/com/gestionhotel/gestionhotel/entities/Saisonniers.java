@@ -2,6 +2,7 @@ package com.gestionhotel.gestionhotel.entities;
 
 import java.util.Date;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 /*
  * Projet: Morphee
@@ -14,6 +15,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
+@DiscriminatorValue("CDD")
 public class Saisonniers extends Employes{
 	
 	//Attributs

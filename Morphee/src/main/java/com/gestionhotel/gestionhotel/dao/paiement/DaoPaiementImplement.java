@@ -6,6 +6,7 @@ import java.util.logging.Logger;
 
 import javax.management.Query;
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 import com.gestionhotel.gestionhotel.entities.Client;
 import com.gestionhotel.gestionhotel.entities.Consommation;
@@ -22,8 +23,11 @@ import com.gestionhotel.gestionhotel.entities.Reservations;
  */
 public class DaoPaiementImplement implements IDaoPaiement {
 
-	Logger log = Logger.getLogger("");
+	Logger log = Logger.getLogger("DaoPaiementImplement");
+	
+	@PersistenceContext
 	private EntityManager em;
+	
 	@Override
 	public Paiements addPaiements(Paiements p) {
 		em.persist(p);

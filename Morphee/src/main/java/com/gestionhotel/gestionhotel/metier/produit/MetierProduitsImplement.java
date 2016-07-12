@@ -3,6 +3,8 @@ package com.gestionhotel.gestionhotel.metier.produit;
 import java.util.List;
 import java.util.logging.Logger;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import com.gestionhotel.gestionhotel.dao.produit.IDaoProduits;
 import com.gestionhotel.gestionhotel.entities.Produits;
 /**
@@ -12,6 +14,7 @@ import com.gestionhotel.gestionhotel.entities.Produits;
  *version : 1.0.0
  *date: 11/07/2016
  */
+@Transactional
 public class MetierProduitsImplement implements IMetierProduit {
 	private IDaoProduits dao;
 	Logger log=Logger.getLogger("MetierProduitsImplement");

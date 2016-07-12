@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import com.gestionhotel.gestionhotel.dao.factures.IDaoFactures;
 import com.gestionhotel.gestionhotel.entities.Factures;
 
@@ -14,6 +16,7 @@ import com.gestionhotel.gestionhotel.entities.Factures;
  * Version: 1.0.0
  * Author: Julie Brouqué
  */
+@Transactional
 public class MetierFacturesImplement implements IMetierFactures{
 
 	//Attributs

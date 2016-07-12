@@ -2,6 +2,8 @@ package com.gestionhotel.gestionhotel.metier.paiement;
 
 import java.util.logging.Logger;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import com.gestionhotel.gestionhotel.dao.paiement.IDaoPaiement;
 import com.gestionhotel.gestionhotel.entities.Paiements;
 /**
@@ -11,6 +13,8 @@ import com.gestionhotel.gestionhotel.entities.Paiements;
  *version : 1.0.0
  *date : 11/07/2016
  */
+
+@Transactional
 public class MetierPaiementImplement implements IMetierPaiement {
 	//Attributs
 	

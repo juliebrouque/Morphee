@@ -3,6 +3,7 @@ package com.gestionhotel.gestionhotel.dao.consommation;
 import java.util.logging.Logger;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 import com.gestionhotel.gestionhotel.entities.Consommation;
 import com.gestionhotel.gestionhotel.entities.Produits;
@@ -17,7 +18,8 @@ import com.gestionhotel.gestionhotel.entities.Reservations;
  */
 public class DaoConsommationImplement implements IDaoConsommation{
 Logger log = Logger.getLogger("DaoConsommationImplement");
-
+    
+   @PersistenceContext
 	private EntityManager em;
 
 	@Override

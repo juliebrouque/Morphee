@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import com.gestionhotel.gestionhotel.daochambres.IDaoChambres;
 import com.gestionhotel.gestionhotel.entities.Chambres;
 /**
@@ -13,7 +15,7 @@ import com.gestionhotel.gestionhotel.entities.Chambres;
  *version: 1.0.0
  *date : 11/07/2016
  */
-
+@Transactional
 public class MetierChambresImplement implements IMetierChambres{
 	//Attributs
 	

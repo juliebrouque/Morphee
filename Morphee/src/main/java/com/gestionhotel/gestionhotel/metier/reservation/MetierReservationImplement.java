@@ -3,6 +3,8 @@ package com.gestionhotel.gestionhotel.metier.reservation;
 import java.util.List;
 import java.util.logging.Logger;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import com.gestionhotel.gestionhotel.dao.reservation.IDaoReservation;
 import com.gestionhotel.gestionhotel.entities.Reservations;
 import com.gestionhotel.gestionhotel.exception.MyException;
@@ -14,6 +16,7 @@ import com.gestionhotel.gestionhotel.exception.MyException;
  * Version: 1.0.0
  * Author: Julie Brouqué
  */
+@Transactional
 public class MetierReservationImplement implements IMetierReservation{
 
 	//Attributs

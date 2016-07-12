@@ -32,15 +32,16 @@ public class TestHotel {
 		context.close();
 	}
 	
-	@Test
+	/*@Test
 	public void testAddHotel() {
 		Hotel h1= new Hotel("Ibis", 3, "4 rue des moines", "75 013", "France", "01 77 56 89 63", "01 77 56 89 75", "hotel-ibis@paris.fr");
 		metier.addHotel(h1);
 		Hotel h2= new Hotel("Ritz", 5, "65 rue de LaFayette", "75 001", "France", "01 95 95 64 03", "01 95 95 64 75", "hotel-ritz@paris.fr");
 		metier.addHotel(h2);
-		Hotel h3= new Hotel("Camp", 5, "65 rue de LaFayette", "75 001", "France", "01 95 95 64 03", "01 95 95 64 75", "hotel-ritz@paris.fr");
+		Hotel h3= new Hotel("Campanile", 5, "5 rue des chênes", "33 000", "France", "05 52 65 89 02", "05 52 65 89 03", "hotel-campanile@bordeaux.fr");
 		metier.addHotel(h3);
-	}
+		assertNotNull(h1.getIdHotel());
+	}*/
 
 	/*@Test
 	public void testGetTabEmploye() {

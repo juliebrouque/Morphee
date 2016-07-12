@@ -2,7 +2,12 @@ package com.gestionhotel.gestionhotel.entities;
 
 import java.util.Date;
 
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 /*
  * Projet: Morphee
  * Class: Employe
@@ -14,6 +19,9 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
+@DiscriminatorValue("EMPL")
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(discriminatorType=DiscriminatorType.STRING)
 public class Employes extends Personnes{
 
 	//Attributs

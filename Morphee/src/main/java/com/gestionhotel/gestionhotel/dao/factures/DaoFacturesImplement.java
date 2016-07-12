@@ -28,7 +28,7 @@ public class DaoFacturesImplement implements IDaoFactures{
 
 	Logger log=Logger.getLogger("DaoFacturesImplement");
 	
-	@PersistenceContext //pour instancier l'entityManager
+	@PersistenceContext
 	private EntityManager em;
 	
 	//Methodes 

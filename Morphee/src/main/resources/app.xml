@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
 
 
-
-	<!-- Injection Operation Dao -->
-	<bean id="daoConsommation"
+  <bean id="daoConsommation"
 		class="com.gestionhotel.gestionhotel.dao.consommation.DaoConsommationImplement"></bean>
 	<bean id="serviceConsommation"
 		class="com.gestionhotel.gestionhotel.metier.consommation.MetierConsommationImplement">
@@ -17,11 +16,11 @@
 	</bean> 
 
 
-	<bean id="daoFacture"
+	<bean id="daoFactures"
 		class="com.gestionhotel.gestionhotel.dao.factures.DaoFacturesImplement"></bean>
 	<bean id="serviceFacture"
 		class="com.gestionhotel.gestionhotel.metier.factures.MetierFacturesImplement">
-		<property name="dao" ref="daoFacture"></property>
+		<property name="dao" ref="daoFactures"></property>
 	</bean> 
 	
 	<bean id="daoHotel"
@@ -66,7 +65,7 @@
 		<property name="dao" ref="daoChambres"></property>
 	</bean>
 
-	<bean id="datasource"
+<bean id="datasource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property><!-- driver 
 			class=connector -->
