@@ -46,11 +46,11 @@ public class TestHotel {
 		Hotel h3= new Hotel("Campanile", 5, "5 rue des chênes", "33 000", "France", "05 52 65 89 02", "05 52 65 89 03", "hotel-campanile@bordeaux.fr");
 		metier.addHotel(h3);
 		assertNotNull(h1.getIdHotel());
-	}*/
-
+	}
+*/
 	/*@Test //ok
 	public void testGetTabEmploye() throws MyException {
-		List<Personnes> tab1= metier.getTabEmploye(1L);
+		List<Personnes> tab1= metier.getTabEmploye(2L);
 		assertTrue(tab1.size()>0);
 	}*/
 

@@ -37,23 +37,23 @@ public class DaoHotelImplement implements IDaoHotel{
 
 	@Override
 	public List<Personnes> getTabEmploye(Long idHotel) throws MyException {
-		Query query= em.createQuery("from Personnes p where DTYPE=Client and idHotel=:x");
+		Query query= em.createQuery("from Employes e where (DTYPE=Contractuels or DTYPE=Saisonniers) and idHotel=:x");
 		query.setParameter("x", idHotel);
 		Hotel h=em.find(Hotel.class, idHotel);
 		if(h == null){
 			throw new MyException("Aucun hôtel n'st attribué à cet identifiant");
 		}
-		log.info("Il existe "+" employés enregistré dans cet hôtel");
+		log.info("Il existe "+query.getResultList().size()+" employés enregistré dans cet hôtel");
 		return query.getResultList();
 	}
 
 	@Override
 	public List<Personnes> gettabClient(Long idHotel) throws MyException {
-		Query query= em.createQuery("from Personnes p, Employes e where (DTYPE=Saisonniers or DTYPE=Contractuels) and idHotel=:x");
+		Query query= em.createQuery("from Personnes p where DTYPE=Client and idHotel=:x");
 		query.setParameter("x", idHotel);
 		Hotel h=em.find(Hotel.class, idHotel);
 		if(h == null){
-			throw new MyException("Aucun hôtel n'st attribué à cet identifiant");
+			throw new MyException("Aucun hôtel n'est attribué à cet identifiant");
 		}
 		log.info("Il existe "+query.getResultList().size()+" clients enregistré dans cet hôtel");
 		return query.getResultList();

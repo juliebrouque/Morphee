@@ -45,15 +45,14 @@ public class DaoReservationImplement implements IDaoReservation{
 		r.setPersonne(p);
 		r.setChambre(c);
 		List<Reservations> tabRes=c.getTabReservationChambre();
-		/*for(Reservations res:tabRes){
+		for(Reservations res:tabRes){
 			if((res.getDateArrivee().before(r.getDateArrivee()) && res.getDateSortie().after(r.getDateArrivee())) 
 					|| (res.getDateArrivee().before(r.getDateSortie()) && res.getDateSortie().after(r.getDateSortie()))){
 				throw new MyException("Cette chambre est déjà réservée du "+res.getDateArrivee()+" au "+res.getDateSortie());
 			}else{
-				
+				em.persist(r);
 			}
-		}*/
-		em.persist(r);
+		}
 		return r;
 	}
 
