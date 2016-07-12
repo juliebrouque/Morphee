@@ -12,7 +12,6 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -127,6 +126,19 @@ public class Chambres {
 	public void setNumChambre(Integer numChambre) {
 		this.numChambre = numChambre;
 	}
+	/*---------------constructeurs----------------*/
+	public Chambres(Integer numChambre, double prixChambre,
+			double surfaceChambre, Integer etageChambre,
+			Integer nbPieceChambre, Integer nbLitChambre) {
+		super();
+		this.numChambre = numChambre;
+		this.prixChambre = prixChambre;
+		this.surfaceChambre = surfaceChambre;
+		this.etageChambre = etageChambre;
+		this.nbPieceChambre = nbPieceChambre;
+		this.nbLitChambre = nbLitChambre;
+	}
 
+	
 	
 }
