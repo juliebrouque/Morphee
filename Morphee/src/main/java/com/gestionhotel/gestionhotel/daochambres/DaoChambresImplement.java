@@ -23,7 +23,7 @@ import com.gestionhotel.gestionhotel.exception.MyException;
 
 /**
  * 
- * @author inti0298
+ * @author Zineb
  *Classe : classe qui définit les méthodes de dao de l'interface chambre
  *version:1.0.0
 *date: 11/07/2016
@@ -81,21 +81,27 @@ public class DaoChambresImplement implements IDaoChambres {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Chambres> getchambresDisponibles(Date dateArrivee, Date dateSortie) {
-		
+		List<Chambres>listeChambresDispo = new ArrayList<Chambres>();
 		List<Chambres> listeDesChambres =getAllChambres();
 		for (Chambres chambres : listeDesChambres) {
 			List<Reservations>listereservationParChambre=chambres.getTabReservationChambre();
+			if(listereservationParChambre.isEmpty()){
+				listeChambresDispo.add(chambres);
+			}else{
 			for (Reservations reservations : listereservationParChambre) {
-				if((reservations.getDateArrivee().before(reservations.getDateArrivee()) && reservations.getDateSortie().after(reservations.getDateArrivee())) 
-						|| (reservations.getDateArrivee().before(reservations.getDateSortie()) && reservations.getDateSortie().after(reservations.getDateSortie()))){
-             listeDesChambres.remove(chambres);		
-				}
-		}
-		
+				if((reservations.getDateArrivee().before(dateArrivee) && reservations.getDateSortie().after(dateSortie)) 
+						|| (reservations.getDateArrivee().before(dateArrivee) && reservations.getDateSortie().after(dateSortie))){
+             	;
+		}else if(listeChambresDispo.contains(chambres.getIdChambre())){
+			
+			}else{
+				listeChambresDispo.add(chambres);
+			}
 	}
-		return listeDesChambres;
-
-}
-	
-	
+			}
+			}
+				
+		return listeChambresDispo;
+	}
+		
 }
