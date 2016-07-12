@@ -33,9 +33,9 @@ public class MetierReservationImplement implements IMetierReservation{
 	
 	@Override
 	public Reservations addReservation(Reservations r, Long idClient,
-			Long idChambre) throws MyException {
+			Long idChambre, Long idFacture) throws MyException {
 		// TODO Auto-generated method stub
-		return dao.addReservation(r, idClient, idChambre);
+		return dao.addReservation(r, idClient, idChambre, idFacture);
 	}
 
 

@@ -56,14 +56,14 @@ public class DaoPersonnesImplement implements IDaoPersonnes{
 
 	@Override
 	public List<Personnes> getPersonnes() {
-		Query query= em.createQuery("from Personne");
+		Query query= em.createQuery("from Personnes");
 		log.info("Il existe "+query.getResultList().size()+" personnes");
 		return query.getResultList();
 	}
 
 	@Override
 	public List<Personnes> getPersonnesParMc(String mc) {
-		Query query= em.createQuery("from Personne p where p.nomPersonne like:x");
+		Query query= em.createQuery("from Personnes p where p.nomPersonne like:x");
 		query.setParameter("x", "%"+mc+"%");
 		log.info("Il existe "+query.getResultList().size()+" personnes trouvées à partir de ce mot clé");
 		return query.getResultList();

@@ -64,4 +64,10 @@ public class MetierFacturesImplement implements IMetierFactures{
 		return dao.getCoutSemestrielClient(dateDebut, dateFin, idClient);
 	}
 
+	@Override
+	public Factures getFacture(Long idFacture) {
+		// TODO Auto-generated method stub
+		return dao.getFacture(idFacture);
+	}
+
 }

@@ -38,8 +38,6 @@ public class Factures {
 	@OneToMany(mappedBy="facture")
 	private List<Reservations> tabReservationsFactures= new ArrayList<Reservations>();
 	
-	@ManyToOne
-	private Hotel hotelFacture;
 	
 	@OneToOne(mappedBy="facturePaiement")
 	private Paiements paiement;
@@ -92,13 +90,6 @@ public class Factures {
 		this.tabReservationsFactures = tabReservationsFactures;
 	}
 
-	public Hotel getHotelFacture() {
-		return hotelFacture;
-	}
-
-	public void setHotelFacture(Hotel hotelFacture) {
-		this.hotelFacture = hotelFacture;
-	}
 
 	public Paiements getPaiement() {
 		return paiement;

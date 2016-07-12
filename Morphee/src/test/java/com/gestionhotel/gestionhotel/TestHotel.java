@@ -8,12 +8,17 @@ package com.gestionhotel.gestionhotel;
  */
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.gestionhotel.gestionhotel.entities.Employes;
 import com.gestionhotel.gestionhotel.entities.Hotel;
+import com.gestionhotel.gestionhotel.entities.Personnes;
+import com.gestionhotel.gestionhotel.exception.MyException;
 import com.gestionhotel.gestionhotel.metier.hotel.IMetierHotel;
 
 public class TestHotel {
@@ -32,7 +37,7 @@ public class TestHotel {
 		context.close();
 	}
 	
-	/*@Test
+	/*@Test //ok
 	public void testAddHotel() {
 		Hotel h1= new Hotel("Ibis", 3, "4 rue des moines", "75 013", "France", "01 77 56 89 63", "01 77 56 89 75", "hotel-ibis@paris.fr");
 		metier.addHotel(h1);
@@ -43,14 +48,16 @@ public class TestHotel {
 		assertNotNull(h1.getIdHotel());
 	}*/
 
-	/*@Test
-	public void testGetTabEmploye() {
-		fail("Not yet implemented");
-	}
+	/*@Test //ok
+	public void testGetTabEmploye() throws MyException {
+		List<Personnes> tab1= metier.getTabEmploye(1L);
+		assertTrue(tab1.size()>0);
+	}*/
 
-	@Test
-	public void testGettabClient() {
-		fail("Not yet implemented");
+	/*@Test //ok
+	public void testGettabClient() throws MyException {
+		List<Personnes> tab1= metier.gettabClient(1L);
+		assertTrue(tab1.size()>0);
 	}*/
 
 }

@@ -19,4 +19,5 @@ public interface IMetierFactures {
 	public List<Factures> getFactures(Long idClient);
 	public double getCoutAnnuelClient(int Année, Long idClient);
 	public double getCoutSemestrielClient(Date dateDebut, Date dateFin, Long idClient);
+	public Factures getFacture(Long idFacture);
 }

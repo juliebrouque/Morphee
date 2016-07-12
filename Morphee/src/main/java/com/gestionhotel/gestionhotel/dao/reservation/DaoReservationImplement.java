@@ -18,6 +18,7 @@ import org.hibernate.validator.internal.util.privilegedactions.GetConstraintVali
 import com.gestionhotel.gestionhotel.entities.Chambres;
 import com.gestionhotel.gestionhotel.entities.Client;
 import com.gestionhotel.gestionhotel.entities.Consommation;
+import com.gestionhotel.gestionhotel.entities.Factures;
 import com.gestionhotel.gestionhotel.entities.Personnes;
 import com.gestionhotel.gestionhotel.entities.Produits;
 import com.gestionhotel.gestionhotel.entities.Reservations;
@@ -36,18 +37,23 @@ public class DaoReservationImplement implements IDaoReservation{
 	
 	
 	@Override
-	public Reservations addReservation(Reservations r, Long idClient, Long idChambres) throws MyException {
+	public Reservations addReservation(Reservations r, Long idClient, Long idChambres, Long idFacture) throws MyException {
 		Personnes p=em.find(Client.class, idClient);
 		Chambres c=em.find(Chambres.class, idChambres);
+		Factures f=em.find(Factures.class, idFacture);
+		r.setFacture(f);
+		r.setPersonne(p);
+		r.setChambre(c);
 		List<Reservations> tabRes=c.getTabReservationChambre();
-		for(Reservations res:tabRes){
+		/*for(Reservations res:tabRes){
 			if((res.getDateArrivee().before(r.getDateArrivee()) && res.getDateSortie().after(r.getDateArrivee())) 
 					|| (res.getDateArrivee().before(r.getDateSortie()) && res.getDateSortie().after(r.getDateSortie()))){
 				throw new MyException("Cette chambre est déjà réservée du "+res.getDateArrivee()+" au "+res.getDateSortie());
 			}else{
-				em.persist(r);
+				
 			}
-		}
+		}*/
+		em.persist(r);
 		return r;
 	}
 

@@ -9,6 +9,7 @@ import com.gestionhotel.gestionhotel.dao.hotel.IDaoHotel;
 import com.gestionhotel.gestionhotel.entities.Client;
 import com.gestionhotel.gestionhotel.entities.Employes;
 import com.gestionhotel.gestionhotel.entities.Hotel;
+import com.gestionhotel.gestionhotel.entities.Personnes;
 import com.gestionhotel.gestionhotel.exception.MyException;
 /*
  * Projet: Morphee
@@ -41,12 +42,12 @@ public class MetierHotelImplement implements IMetierHotel{
 		return dao.addHotel(h);
 	}
 	@Override
-	public List<Employes> getTabEmploye(Long idHotel) throws MyException {
+	public List<Personnes> getTabEmploye(Long idHotel) throws MyException {
 		// TODO Auto-generated method stub
 		return dao.getTabEmploye(idHotel);
 	}
 	@Override
-	public List<Client> gettabClient(Long idHotel) throws MyException {
+	public List<Personnes> gettabClient(Long idHotel) throws MyException {
 		// TODO Auto-generated method stub
 		return dao.gettabClient(idHotel);
 	}

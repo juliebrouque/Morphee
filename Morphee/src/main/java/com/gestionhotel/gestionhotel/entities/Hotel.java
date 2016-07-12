@@ -42,8 +42,6 @@ public class Hotel {
 	@OneToMany(mappedBy="hotelPersonne")
 	private List<Personnes> tabPersonneHotel=new ArrayList<Personnes>();
 	
-	@OneToMany(mappedBy="hotelFacture")
-	private List<Factures> tabFactureHotel=new ArrayList<Factures>();
 	
 	//Constructors
 	
@@ -118,14 +116,6 @@ public class Hotel {
 
 	public void setTabPersonneHotel(List<Personnes> tabPersonneHotel) {
 		this.tabPersonneHotel = tabPersonneHotel;
-	}
-
-	public List<Factures> getTabFactureHotel() {
-		return tabFactureHotel;
-	}
-
-	public void setTabFactureHotel(List<Factures> tabFactureHotel) {
-		this.tabFactureHotel = tabFactureHotel;
 	}
 
 	public String getCodePostal() {

@@ -105,4 +105,11 @@ public class DaoFacturesImplement implements IDaoFactures{
 		return coutReservation;
 	}
 
+	@Override
+	public Factures getFacture(Long idFacture) {
+		Factures f1=em.find(Factures.class, idFacture);
+		log.info("La facture "+f1.getIdFacture()+" a bien été récupérée");
+		return null;
+	}
+
 }

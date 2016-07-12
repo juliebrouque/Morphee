@@ -14,7 +14,7 @@ import com.gestionhotel.gestionhotel.exception.MyException;
  */
 public interface IDaoReservation {
 	
-	public Reservations addReservation(Reservations r, Long idClient, Long idChambre) throws MyException;
+	public Reservations addReservation(Reservations r, Long idClient, Long idChambre, Long idFacture) throws MyException;
 	public List<Reservations> getReservations();
 	public Reservations getReservation(Long idReservation);
 	public void deleteReservation(Long idReservation);

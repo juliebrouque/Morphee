@@ -37,6 +37,7 @@ public class Reservations {
 	private Date dateSortie;
 	
 	@ManyToOne
+	@JoinColumn(name="idFacture")
 	private Factures facture;
 	
 	@ManyToOne
