@@ -2,6 +2,8 @@ package com.gestionhotel.gestionhotel;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -30,32 +32,40 @@ public class TestProduit {
 	public static void tearDownAfterClass() throws Exception {
 		context.close();
 	}
-
-	@Test
+//test validé
+	/*@Test
 	public void testAddProduit() {
-		Produits p = new Produits(15, "repasChaud", "1245588", 3);
+		Produits p = new Produits(9, "eau", "154889", 4);
 		metier.addProduit(p);
 		assertNotNull(p);
-	}
-
+	}*/
+//test validé
 	/*@Test
 	public void testDeleteProduit() {
-		fail("Not yet implemented");
-	}
+		Produits p = metier.getProduitById(2L);
+		metier.deleteProduit(2L);
+		System.out.println("le produit"+ " "+ p.getNomProduit()+"a été supprimé");
+	}*/
 
-	@Test
+	/*@Test
 	public void testUpdateChambre() {
-		fail("Not yet implemented");
-	}
+		Produits p = metier.getProduitById(1L);
+		p.setPrixProduit(35);
+		p.setQuantiteProduit(10);
+		metier.updateChambre(p);
+		System.out.println("le produit"+ " "+ p.getNomProduit()+ " a bien été modofié");
+	}*/
 
-	@Test
+	/*@Test
 	public void testGetAllProduits() {
-		fail("Not yet implemented");
-	}
+		List<Produits>listeAllProduists = metier.getAllProduits();
+		System.out.println("il existe"+" "+ listeAllProduists.size()+"produits");
+	}*/
 
-	@Test
+	/*@Test
 	public void testGetProduitById() {
-		fail("Not yet implemented");
+		Produits p = metier.getProduitById(1L);
+		System.out.println("le produit"+ " "+ p.getNomProduit()+" "+"a bien été récupéré");
 	}*/
 
 }
