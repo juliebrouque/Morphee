@@ -41,13 +41,13 @@ public class TestReservation {
 		context.close();
 	}
 	
-	/*@Test //ok
+/*	@Test //ok
 	public void testAddReservation() throws ParseException, MyException {
 		SimpleDateFormat sdf=new SimpleDateFormat("dd/MM/yyyy");
-		Date madate1=sdf.parse("03/06/2017");
-		Date madate2=sdf.parse("14/06/2017");
+		Date madate1=sdf.parse("03/04/2016");
+		Date madate2=sdf.parse("14/04/2016");
 		Reservations r1=new Reservations(madate1, madate2);
-		metier.addReservation(r1, 1L, 1L, 1L);
+		metier.addReservation(r1, 2L, 1L, 1L);
 		assertNotNull(r1.getIdReservation());
 	}*/
 
@@ -88,11 +88,11 @@ public class TestReservation {
 		assertTrue(cout!=0);
 	}*/
 
-	@Test //ok mais vérifier avec consommations
+	/*@Test //ok mais vérifier avec consommations
 	public void testCoûtReservations() {
 		double coût=metier.coûtReservations();
 		assertTrue(coût!=0);
-	}
+	}*/
 
 	/*@Test
 	public void testGetStockProduit() {
@@ -104,4 +104,10 @@ public class TestReservation {
 		List<Reservations> tab= metier.getReservationClient(1L);
 		assertTrue(tab.size()>0);
 	}*/
+	
+	@Test
+	public void testGetReservationChambre() {
+		List<Reservations> tab= metier.getReservationChambre(1L);
+		assertTrue(tab.size()>0);
+}
 }

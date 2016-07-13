@@ -142,5 +142,13 @@ public class DaoReservationImplement implements IDaoReservation{
 		return tab1;
 	}
 
+	@Override
+	public List<Reservations> getReservationChambre(Long idChambre) {
+		Chambres c=em.find(Chambres.class, idChambre);
+		List<Reservations> tab=c.getTabReservationChambre();
+		log.info("La chambre "+c.getIdChambre()+" possède "+tab.size()+" réservation(s)");
+		return tab;
+	}
+
 
 }

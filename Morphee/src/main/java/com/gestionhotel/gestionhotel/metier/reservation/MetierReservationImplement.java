@@ -87,4 +87,10 @@ public class MetierReservationImplement implements IMetierReservation{
 		return dao.getReservationClient(idClient);
 	}
 
+	@Override
+	public List<Reservations> getReservationChambre(Long idChambre) {
+		// TODO Auto-generated method stub
+		return dao.getReservationChambre(idChambre);
+	}
+
 }
