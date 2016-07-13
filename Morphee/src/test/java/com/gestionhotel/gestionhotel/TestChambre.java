@@ -87,13 +87,13 @@ public class TestChambre {
 		assertNotNull(ch.getIdChambre());
 	}*/
 
-	/*@Test
+	@Test
 	public void testGetchambresDisponibles() throws ParseException {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		Date dateArrivee = sdf.parse("03/06/2016");
-		Date dateSortie = sdf.parse("22/06/2016");
+		Date dateArrivee = sdf.parse("01/01/2017");
+		Date dateSortie = sdf.parse("15/01/2017");
 		List<Chambres>listeChambresDispo = metier.getchambresDisponibles(dateArrivee, dateSortie);
 		System.out.println("liste des chambres dispo:" +" "+ listeChambresDispo.size());
-	}*/
+	}
 
 }

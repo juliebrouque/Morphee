@@ -6,6 +6,7 @@ package com.gestionhotel.gestionhotel.dao.reservation;
  * Version: 1.0.0
  * Author: Julie Brouqué
  */
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -41,18 +42,24 @@ public class DaoReservationImplement implements IDaoReservation{
 		Personnes p=em.find(Client.class, idClient);
 		Chambres c=em.find(Chambres.class, idChambres);
 		Factures f=em.find(Factures.class, idFacture);
-		r.setFacture(f);
-		r.setPersonne(p);
-		r.setChambre(c);
 		List<Reservations> tabRes=c.getTabReservationChambre();
+		List<Reservations> tab1=new ArrayList<Reservations>();
 		for(Reservations res:tabRes){
 			if((res.getDateArrivee().before(r.getDateArrivee()) && res.getDateSortie().after(r.getDateArrivee())) 
-					|| (res.getDateArrivee().before(r.getDateSortie()) && res.getDateSortie().after(r.getDateSortie())) || res.getDateArrivee().equals(r.getDateArrivee()) || res.getDateSortie().equals(r.getDateSortie())){
+					|| (res.getDateArrivee().before(r.getDateSortie()) 
+							&& res.getDateSortie().after(r.getDateSortie())) 
+							|| res.getDateArrivee().equals(r.getDateArrivee()) 
+							|| res.getDateSortie().equals(r.getDateSortie())
+							|| (r.getDateArrivee().before(res.getDateArrivee()) && r.getDateSortie().after(res.getDateSortie()))){
+				tab1.add(res);
 				throw new MyException("Cette chambre est déjà réservée du "+res.getDateArrivee()+" au "+res.getDateSortie());
-			}else{
+			}}if(tab1.isEmpty()){
+				r.setFacture(f);
+				r.setPersonne(p);
+				r.setChambre(c);
 				em.persist(r);
+				log.info("La réservation "+r.getIdReservation()+" a bien été enregistrée");
 			}
-		}
 		return r;
 	}
 
@@ -89,13 +96,15 @@ public class DaoReservationImplement implements IDaoReservation{
 	public double coûtReservation(Long idReservation) {
 		Reservations r=em.find(Reservations.class, idReservation);
 		List<Consommation> tabCons=r.getTabConsommationreservation();
+		Long nbJours= (r.getDateSortie().getTime()-r.getDateArrivee().getTime())/(24*60*60*1000);
+		log.info("nombre joures"+nbJours);
 		double coutCons=0;
 		for(Consommation c:tabCons){
 			if(c.getReservation().getIdReservation().equals(idReservation)){
-				coutCons=coutCons+c.getProduit().getPrixProduit();
+				coutCons=coutCons+(c.getProduit().getPrixProduit())*c.getQuantiteConsomee();
 			}
 		}
-		double cout=r.getChambre().getPrixChambre()+coutCons;
+		double cout=(r.getChambre().getPrixChambre())*nbJours+coutCons;
 		log.info("Le coût de la réservation"+r.getIdReservation()+" est de "+cout);
 		return cout;
 	}
@@ -107,11 +116,12 @@ public class DaoReservationImplement implements IDaoReservation{
 		double coutCons=0;
 		double coutChambre=0;
 		for(Reservations r:tabRes){
+			Long nbJours= (r.getDateSortie().getTime()-r.getDateArrivee().getTime())/(24*60*60*1000);
 			List<Consommation> tabCons=r.getTabConsommationreservation();
 			for(Consommation c:tabCons){
-				coutCons=coutCons+c.getProduit().getPrixProduit();
+				coutCons=coutCons+(c.getProduit().getPrixProduit())*c.getQuantiteConsomee();
 			}
-			coutChambre=coutChambre+r.getChambre().getPrixChambre();
+			coutChambre=coutChambre+(r.getChambre().getPrixChambre())*nbJours;
 		}
 		coutReservation=coutChambre+coutCons;
 		log.info("Le coût des réservations est de "+coutReservation);
@@ -122,6 +132,14 @@ public class DaoReservationImplement implements IDaoReservation{
 	public double getStockProduit(Long idProduit) {
 		Produits p=em.find(Produits.class, idProduit);
 		return p.getQuantiteProduit();
+	}
+
+	@Override
+	public List<Reservations> getReservationClient(Long idClient) {
+		Personnes p1=em.find(Client.class, idClient);
+		List<Reservations> tab1=p1.getTabReservationPersonne();
+		log.info("Le client "+p1.getIdPersonnes()+" a effectué "+tab1.size()+" réservations");
+		return tab1;
 	}
 
 

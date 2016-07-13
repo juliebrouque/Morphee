@@ -22,5 +22,6 @@ public interface IDaoReservation {
 	public double coûtReservation(Long idReservation);
 	public double coûtReservations();
 	public double getStockProduit(Long idProduit);
+	public List<Reservations> getReservationClient(Long idClient);
 
 }

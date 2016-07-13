@@ -81,4 +81,10 @@ public class MetierReservationImplement implements IMetierReservation{
 		return dao.getStockProduit(idProduit);
 	}
 
+	@Override
+	public List<Reservations> getReservationClient(Long idClient) {
+		// TODO Auto-generated method stub
+		return dao.getReservationClient(idClient);
+	}
+
 }

@@ -75,10 +75,11 @@ public class DaoFacturesImplement implements IDaoFactures{
 			c.setTime(res.getDateSortie());
 			int year = c.get(Calendar.YEAR);
 			if(Année==year){
-				coutChambre=coutChambre+res.getChambre().getPrixChambre();
+				Long nbJours= (res.getDateSortie().getTime()-res.getDateArrivee().getTime())/(24*60*60*1000);
+				coutChambre=coutChambre+(res.getChambre().getPrixChambre())*nbJours;
 				List<Consommation> tabCons=res.getTabConsommationreservation();
 				for(Consommation cons:tabCons){
-					coutCons=coutCons+cons.getProduit().getPrixProduit();
+					coutCons=coutCons+(cons.getProduit().getPrixProduit())*cons.getQuantiteConsomee();
 				}
 			}
 		}
@@ -96,10 +97,11 @@ public class DaoFacturesImplement implements IDaoFactures{
 		double coutChambre=0;
 		for(Reservations res:tabRes){
 			if(dateDebut.before(res.getDateArrivee()) && dateFin.after(res.getDateSortie())){
-				coutChambre=coutChambre+res.getChambre().getPrixChambre();
+				Long nbJours= (res.getDateSortie().getTime()-res.getDateArrivee().getTime())/(24*60*60*1000);
+				coutChambre=coutChambre+(res.getChambre().getPrixChambre())*nbJours;
 				List<Consommation> tabCons=res.getTabConsommationreservation();
 				for(Consommation c:tabCons){
-					coutCons=coutCons+c.getProduit().getPrixProduit();
+					coutCons=coutCons+(c.getProduit().getPrixProduit())*c.getQuantiteConsomee();
 				}
 			}
 		}

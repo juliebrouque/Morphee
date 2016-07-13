@@ -69,7 +69,7 @@ public class TestFactures {
 		assertTrue(cout!=0);
 	}*/
 
-	/*@Test //ok mais voir avec consommations
+/*	@Test //ok mais voir avec consommations
 	public void testGetCoutSemestrielClient() throws ParseException {
 		SimpleDateFormat sdf=new SimpleDateFormat("dd/MM/yyyy");
 		Date madate1=sdf.parse("01/01/2016");

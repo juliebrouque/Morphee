@@ -92,14 +92,17 @@ public class DaoChambresImplement implements IDaoChambres {
 				if((reservations.getDateArrivee().before(dateArrivee) && reservations.getDateSortie().after(dateSortie)) 
 						|| (reservations.getDateArrivee().before(dateArrivee) && reservations.getDateSortie().after(dateSortie))){
              	;
-		}else if(listeChambresDispo.contains(chambres.getIdChambre())){
-			
+		}else{
+			if(listeChambresDispo.contains(chambres.getIdChambre())){
+				;
 			}else{
 				listeChambresDispo.add(chambres);
 			}
-	}
+		}
+			
 			}
 			}
+		}
 				
 		return listeChambresDispo;
 	}

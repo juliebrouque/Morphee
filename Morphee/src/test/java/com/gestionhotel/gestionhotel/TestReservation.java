@@ -10,6 +10,7 @@ import static org.junit.Assert.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -43,8 +44,8 @@ public class TestReservation {
 	/*@Test //ok
 	public void testAddReservation() throws ParseException, MyException {
 		SimpleDateFormat sdf=new SimpleDateFormat("dd/MM/yyyy");
-		Date madate1=sdf.parse("02/06/2016");
-		Date madate2=sdf.parse("15/06/2016");
+		Date madate1=sdf.parse("03/06/2017");
+		Date madate2=sdf.parse("14/06/2017");
 		Reservations r1=new Reservations(madate1, madate2);
 		metier.addReservation(r1, 1L, 1L, 1L);
 		assertNotNull(r1.getIdReservation());
@@ -81,21 +82,26 @@ public class TestReservation {
 		assertTrue(r1.getDateSortie()!=r2.getDateSortie());
 	}*/
 
-	/*@Test //ok mais verifier avec consommations
+/*	@Test //ok 
 	public void testCoûtReservation() {
 		double cout=metier.coûtReservation(1L);
 		assertTrue(cout!=0);
 	}*/
 
-/*	@Test //ok mais vérifier avec consommations
+	@Test //ok mais vérifier avec consommations
 	public void testCoûtReservations() {
 		double coût=metier.coûtReservations();
 		assertTrue(coût!=0);
-	}*/
+	}
 
 	/*@Test
 	public void testGetStockProduit() {
 		fail("Not yet implemented");
 	}*/
-
+	
+	/*@Test
+	public void testGetReservationClient() {
+		List<Reservations> tab= metier.getReservationClient(1L);
+		assertTrue(tab.size()>0);
+	}*/
 }
