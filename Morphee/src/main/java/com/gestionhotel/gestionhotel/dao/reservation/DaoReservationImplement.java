@@ -94,9 +94,10 @@ public class DaoReservationImplement implements IDaoReservation{
 
 	@Override
 	public double coûtReservation(Long idReservation) {
+		final int nbMiliSec=24*60*60*1000;
 		Reservations r=em.find(Reservations.class, idReservation);
 		List<Consommation> tabCons=r.getTabConsommationreservation();
-		Long nbJours= (r.getDateSortie().getTime()-r.getDateArrivee().getTime())/(24*60*60*1000);
+		Long nbJours= (r.getDateSortie().getTime()-r.getDateArrivee().getTime())/nbMiliSec;
 		log.info("nombre joures"+nbJours);
 		double coutCons=0;
 		for(Consommation c:tabCons){
