@@ -45,7 +45,7 @@ public class DaoProduitsImplement implements IDaoProduits {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Produits> getAllProduits() {
-		Query query = em.createQuery("Select from Produits p");
+		Query query = em.createQuery("from Produits ");
 		log.info("il existe" + query.getResultList().size() + "produits");
 		return query.getResultList();
 	}
