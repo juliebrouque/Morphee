@@ -16,7 +16,7 @@ import com.gestionhotel.gestionhotel.entities.Personnes;
 import com.gestionhotel.gestionhotel.entities.Reservations;
 /**
  * 
- * @author inti0298
+ * @author Zineb LAMRANI
  *classe qui définit les méthodes de l'interface paiement
  *version : 1.0.0
  *date : 11/07/2016
@@ -46,7 +46,6 @@ public class DaoPaiementImplement implements IDaoPaiement {
 	double coutBenefAnnuel=0;
 	for (Consommation consommation : tabConsoParReservation) {
 		Calendar c = Calendar.getInstance(); 
-		
 		c.setTime(f.getDateFacturation());
 		int year = c.get(Calendar.YEAR);
 		if(Annee==year){
