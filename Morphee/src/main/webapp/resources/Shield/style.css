@@ -1,0 +1,29 @@
+table {
+	text-align: center;
+	margin: auto;
+	margin-bottom: 20px;
+	border: 1px solid;
+	
+}
+table th{
+	border: 1px solid;
+	text-align: center;
+	padding: 10px;
+	margin: 50px;
+}
+
+table td{
+	border: 1px solid;
+	padding: 10px;
+	margin: 50px;
+}
+
+body{
+	text-align: center;
+	background-color: rgba(233,201,177,0.8) !important;
+}
+
+.table2 {
+	color: black !important;
+	background-color: rgba(233,201,177,0.8) !important;
+}
