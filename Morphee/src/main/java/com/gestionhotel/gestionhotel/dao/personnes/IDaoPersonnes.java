@@ -9,6 +9,7 @@ package com.gestionhotel.gestionhotel.dao.personnes;
 import java.util.List;
 
 import com.gestionhotel.gestionhotel.entities.Personnes;
+import com.gestionhotel.gestionhotel.exception.MyException;
 
 public interface IDaoPersonnes {
 	
@@ -17,6 +18,9 @@ public interface IDaoPersonnes {
 	public Personnes getPersonne(Long idPersonne);
 	public Personnes updatePersonne(Personnes p);
 	public List<Personnes> getPersonnes();
-	public List<Personnes> getPersonnesParMc(String mc);
+	public List<Personnes> getPersonnesParMc(String mc) throws MyException;
+	public List<Personnes> getPersonnesClient() throws MyException;
+	public List<Personnes> getPersonnesEmployeCdi() throws MyException;
+	public List<Personnes> getPersonnesEmployeCdd() throws MyException;
 
 }

@@ -36,12 +36,12 @@ public class DaoHotelImplement implements IDaoHotel{
 	}
 
 	@Override
-	public List<Personnes> getTabEmploye(Long idHotel) throws MyException {
-		Query query= em.createQuery("from Employes e where (DTYPE=Contractuels or DTYPE=Saisonniers) and idHotel=:x");
+	public List<Personnes> getTabEmployeCdi(Long idHotel) throws MyException {
+		Query query= em.createQuery("from Employes e where DTYPE=Contractuels and idHotel=:x");
 		query.setParameter("x", idHotel);
 		Hotel h=em.find(Hotel.class, idHotel);
-		if(h == null){
-			throw new MyException("Aucun hôtel n'st attribué à cet identifiant");
+		if(query.getResultList().isEmpty()){
+			throw new MyException("Aucun employé contractuel ne travail dans cet hotel");
 		}
 		log.info("Il existe "+query.getResultList().size()+" employés enregistré dans cet hôtel");
 		return query.getResultList();
@@ -52,10 +52,36 @@ public class DaoHotelImplement implements IDaoHotel{
 		Query query= em.createQuery("from Personnes p where DTYPE=Client and idHotel=:x");
 		query.setParameter("x", idHotel);
 		Hotel h=em.find(Hotel.class, idHotel);
-		if(h == null){
-			throw new MyException("Aucun hôtel n'est attribué à cet identifiant");
+		if(query.getResultList().isEmpty()){
+			throw new MyException("Cet hotel ne possède aucun client");
 		}
 		log.info("Il existe "+query.getResultList().size()+" clients enregistré dans cet hôtel");
+		return query.getResultList();
+	}
+
+	@Override
+	public Hotel getHotel(Long idHotel) {
+		Hotel h1=em.find(Hotel.class, idHotel);
+		log.info("L'hotel "+h1.getNomHotel()+" a bien été récupéré");
+		return h1;
+	}
+
+	@Override
+	public List<Hotel> getHotels() {
+		Query query= em.createQuery("from Hotel");
+		log.info("Il existe "+query.getResultList().size()+" hotels");
+		return query.getResultList();
+	}
+
+	@Override
+	public List<Personnes> getTabEmployeCdd(Long idHotel) throws MyException {
+		Query query= em.createQuery("from Employes e where DTYPE=Saisonniers and idHotel=:x");
+		query.setParameter("x", idHotel);
+		Hotel h=em.find(Hotel.class, idHotel);
+		if(query.getResultList().isEmpty()){
+			throw new MyException("Aucun employé saisonnier ne travail dans cet hotel");
+		}
+		log.info("Il existe "+query.getResultList().size()+" employés enregistré dans cet hôtel");
 		return query.getResultList();
 	}
 

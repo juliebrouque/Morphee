@@ -42,13 +42,32 @@ public class MetierHotelImplement implements IMetierHotel{
 		return dao.addHotel(h);
 	}
 	@Override
-	public List<Personnes> getTabEmploye(Long idHotel) throws MyException {
+	public List<Personnes> getTabEmployeCdi(Long idHotel) throws MyException {
 		// TODO Auto-generated method stub
-		return dao.getTabEmploye(idHotel);
+		return dao.getTabEmployeCdi(idHotel);
 	}
 	@Override
 	public List<Personnes> gettabClient(Long idHotel) throws MyException {
 		// TODO Auto-generated method stub
 		return dao.gettabClient(idHotel);
+	}
+
+	@Override
+	public Hotel getHotel(Long idHotel) {
+		// TODO Auto-generated method stub
+		return dao.getHotel(idHotel);
+	}
+
+	@Override
+	public List<Hotel> getHotels() {
+		// TODO Auto-generated method stub
+		return dao.getHotels();
+	}
+
+
+	@Override
+	public List<Personnes> getTabEmployeCdd(Long idHotel) throws MyException {
+		// TODO Auto-generated method stub
+		return dao.getTabEmployeCdd(idHotel);
 	}
 }

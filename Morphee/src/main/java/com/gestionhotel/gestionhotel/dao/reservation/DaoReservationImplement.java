@@ -3,7 +3,6 @@ package com.gestionhotel.gestionhotel.dao.reservation;
  * Projet: Morphee
  * Class: DaoReservationImplemeny
  * Date: 11/07/2016
- * Version: 1.0.0
  * Author: Julie Brouqué
  */
 import java.util.ArrayList;
@@ -38,10 +37,15 @@ public class DaoReservationImplement implements IDaoReservation{
 	
 	
 	@Override
-	public Reservations addReservation(Reservations r, Long idClient, Long idChambres, Long idFacture) throws MyException {
+	public Reservations addReservation(Reservations r, Long idClient, Long idChambres) throws MyException {
 		Personnes p=em.find(Client.class, idClient);
 		Chambres c=em.find(Chambres.class, idChambres);
-		Factures f=em.find(Factures.class, idFacture);
+		if(c==null){
+			throw new MyException("L'identifiant chambre saisit n'existe pas");
+		}
+		if(p==null){
+			throw new MyException("L'identifiant client saisit n'existe pas");
+		}
 		List<Reservations> tabRes=c.getTabReservationChambre();
 		List<Reservations> tab1=new ArrayList<Reservations>();
 		for(Reservations res:tabRes){
@@ -54,10 +58,11 @@ public class DaoReservationImplement implements IDaoReservation{
 				tab1.add(res);
 				throw new MyException("Cette chambre est déjà réservée du "+res.getDateArrivee()+" au "+res.getDateSortie());
 			}}if(tab1.isEmpty()){
-				r.setFacture(f);
 				r.setPersonne(p);
 				r.setChambre(c);
 				em.persist(r);
+				Client c1=(Client) p;
+				c1.setNbReservation(c1.getNbReservation()+1);
 				log.info("La réservation "+r.getIdReservation()+" a bien été enregistrée");
 			}
 		return r;
@@ -71,8 +76,11 @@ public class DaoReservationImplement implements IDaoReservation{
 	}
 
 	@Override
-	public Reservations getReservation(Long idReservation) {
+	public Reservations getReservation(Long idReservation) throws MyException {
 		Reservations r=em.find(Reservations.class, idReservation);
+		if(r==null){
+			throw new MyException("L'identifiant reservation saisit n'existe pas");
+		}
 		log.info("La réservation "+r.getIdReservation()+" a bien été récupérée");
 		return r;
 	}
@@ -81,6 +89,8 @@ public class DaoReservationImplement implements IDaoReservation{
 	public void deleteReservation(Long idReservation) {
 		Reservations r=em.find(Reservations.class, idReservation);
 		em.remove(r);
+		Client c=(Client) r.getPersonne();
+		c.setNbReservation(c.getNbReservation()-1);
 		log.info("La réservation "+r.getIdReservation()+" a bien été supprimée");
 		
 	}
@@ -93,9 +103,12 @@ public class DaoReservationImplement implements IDaoReservation{
 	}
 
 	@Override
-	public double coûtReservation(Long idReservation) {
+	public double coûtReservation(Long idReservation) throws MyException {
 		final int nbMiliSec=24*60*60*1000;
 		Reservations r=em.find(Reservations.class, idReservation);
+		if(r==null){
+			throw new MyException("L'identifiant reservation saisit n'existe pas");
+		}
 		List<Consommation> tabCons=r.getTabConsommationreservation();
 		Long nbJours= (r.getDateSortie().getTime()-r.getDateArrivee().getTime())/nbMiliSec;
 		log.info("nombre joures"+nbJours);
@@ -117,6 +130,7 @@ public class DaoReservationImplement implements IDaoReservation{
 		double coutCons=0;
 		double coutChambre=0;
 		for(Reservations r:tabRes){
+			System.out.println(r.getChambre());
 			Long nbJours= (r.getDateSortie().getTime()-r.getDateArrivee().getTime())/(24*60*60*1000);
 			List<Consommation> tabCons=r.getTabConsommationreservation();
 			for(Consommation c:tabCons){
@@ -136,17 +150,29 @@ public class DaoReservationImplement implements IDaoReservation{
 	}
 
 	@Override
-	public List<Reservations> getReservationClient(Long idClient) {
+	public List<Reservations> getReservationClient(Long idClient) throws MyException {
 		Personnes p1=em.find(Client.class, idClient);
+		if(p1==null){
+			throw new MyException("L'identifiant client saisit n'existe pas");
+		}
 		List<Reservations> tab1=p1.getTabReservationPersonne();
+		if(tab1.isEmpty()){
+			throw new MyException("Aucune réservation n'est enregistrée pour ce client");
+		}
 		log.info("Le client "+p1.getIdPersonnes()+" a effectué "+tab1.size()+" réservations");
 		return tab1;
 	}
 
 	@Override
-	public List<Reservations> getReservationChambre(Long idChambre) {
+	public List<Reservations> getReservationChambre(Long idChambre) throws MyException {
 		Chambres c=em.find(Chambres.class, idChambre);
+		if(c==null){
+			throw new MyException("L'identifiant chambre saisit n'existe pas");
+		}
 		List<Reservations> tab=c.getTabReservationChambre();
+		if(tab.isEmpty()){
+			throw new MyException("Aucune réservation n'est enregistrée pour cette chambre");
+		}
 		log.info("La chambre "+c.getIdChambre()+" possède "+tab.size()+" réservation(s)");
 		return tab;
 	}

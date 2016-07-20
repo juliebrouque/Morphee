@@ -107,7 +107,7 @@ http://www.springframework.org/schema/beans
 	<context:annotation-config></context:annotation-config><!-- pour activer 
 		les annotations -->
 
-	<mvc:resources mapping="/resources/Shield/assets/**" location="/resources/Shield/assets/"
+	<mvc:resources mapping="/resources/Shield/**" location="/resources/Shield/"
 		cache-period="10000"></mvc:resources>
 		
 </beans>

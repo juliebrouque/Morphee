@@ -14,15 +14,15 @@ import com.gestionhotel.gestionhotel.exception.MyException;
  */
 public interface IDaoReservation {
 	
-	public Reservations addReservation(Reservations r, Long idClient, Long idChambre, Long idFacture) throws MyException;
+	public Reservations addReservation(Reservations r, Long idClient, Long idChambre) throws MyException;
 	public List<Reservations> getReservations();
-	public Reservations getReservation(Long idReservation);
+	public Reservations getReservation(Long idReservation) throws MyException;
 	public void deleteReservation(Long idReservation);
 	public Reservations updateReservation(Reservations r);
-	public double coûtReservation(Long idReservation);
+	public double coûtReservation(Long idReservation) throws MyException;
 	public double coûtReservations();
 	public double getStockProduit(Long idProduit);
-	public List<Reservations> getReservationClient(Long idClient);
-	public List<Reservations> getReservationChambre(Long idChambre);
+	public List<Reservations> getReservationClient(Long idClient) throws MyException;
+	public List<Reservations> getReservationChambre(Long idChambre) throws MyException;
 
 }

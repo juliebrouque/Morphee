@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.gestionhotel.gestionhotel.dao.personnes.IDaoPersonnes;
 import com.gestionhotel.gestionhotel.entities.Personnes;
+import com.gestionhotel.gestionhotel.exception.MyException;
 
 /*
  * Projet: Morphee
@@ -63,9 +64,27 @@ public class MetierPersonnesImplement implements IMetierPersonne{
 	}
 
 	@Override
-	public List<Personnes> getPersonnesParMc(String mc) {
+	public List<Personnes> getPersonnesParMc(String mc) throws MyException {
 		// TODO Auto-generated method stub
 		return dao.getPersonnesParMc(mc);
+	}
+
+	@Override
+	public List<Personnes> getPersonnesEmployeCdi() throws MyException {
+		// TODO Auto-generated method stub
+		return dao.getPersonnesEmployeCdi();
+	}
+
+	@Override
+	public List<Personnes> getPersonnesEmployeCdd() throws MyException {
+		// TODO Auto-generated method stub
+		return dao.getPersonnesEmployeCdd();
+	}
+
+	@Override
+	public List<Personnes> getPersonnesClient() throws MyException {
+		// TODO Auto-generated method stub
+		return dao.getPersonnesClient();
 	}
 
 }

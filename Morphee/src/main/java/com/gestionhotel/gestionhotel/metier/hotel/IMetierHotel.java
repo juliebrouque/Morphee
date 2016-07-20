@@ -18,6 +18,9 @@ import com.gestionhotel.gestionhotel.exception.MyException;
 public interface IMetierHotel {
 
 	public Hotel addHotel(Hotel h);
-	public List<Personnes> getTabEmploye(Long idHotel) throws MyException;
+	public List<Personnes> getTabEmployeCdi(Long idHotel) throws MyException;
 	public List<Personnes> gettabClient(Long idHotel) throws MyException;
+	public Hotel getHotel(Long idHotel);
+	public List<Hotel> getHotels();
+	public List<Personnes> getTabEmployeCdd(Long idHotel) throws MyException;
 }

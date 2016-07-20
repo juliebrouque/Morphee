@@ -45,6 +45,7 @@ public class DaoFacturesImplement implements IDaoFactures{
 		Reservations r=em.find(Reservations.class, idReservation);
 		Factures f=em.find(Factures.class, idFacture);
 		f.getTabReservationsFactures().add(r);
+		r.setFacture(f);
 		log.info("La réservation "+r.getIdReservation()+" a bien été rajoutée à la facture"+f.getIdFacture());
 		
 	}
@@ -64,7 +65,7 @@ public class DaoFacturesImplement implements IDaoFactures{
 	}
 
 	@Override
-	public double getCoutAnnuelClient(int Année, Long idClient) {
+	public double getCoutAnnuelClient(Long Année, Long idClient) {
 		Personnes p=em.find(Client.class, idClient);
 		List<Reservations> tabRes=p.getTabReservationPersonne();
 		double coutReservation=0;
@@ -115,6 +116,13 @@ public class DaoFacturesImplement implements IDaoFactures{
 		Factures f1=em.find(Factures.class, idFacture);
 		log.info("La facture "+f1.getIdFacture()+" a bien été récupérée");
 		return f1;
+	}
+
+	@Override
+	public List<Factures> getAllFactures() {
+		Query query= em.createQuery("from Factures");
+		log.info("Il existe "+query.getResultList().size()+" factures");
+		return query.getResultList();
 	}
 
 }

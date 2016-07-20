@@ -33,9 +33,9 @@ public class MetierReservationImplement implements IMetierReservation{
 	
 	@Override
 	public Reservations addReservation(Reservations r, Long idClient,
-			Long idChambre, Long idFacture) throws MyException {
+			Long idChambre) throws MyException {
 		// TODO Auto-generated method stub
-		return dao.addReservation(r, idClient, idChambre, idFacture);
+		return dao.addReservation(r, idClient, idChambre);
 	}
 
 
@@ -46,7 +46,7 @@ public class MetierReservationImplement implements IMetierReservation{
 	}
 
 	@Override
-	public Reservations getReservation(Long idReservation) {
+	public Reservations getReservation(Long idReservation) throws MyException {
 		// TODO Auto-generated method stub
 		return dao.getReservation(idReservation);
 	}
@@ -64,7 +64,7 @@ public class MetierReservationImplement implements IMetierReservation{
 	}
 
 	@Override
-	public double coûtReservation(Long idReservation) {
+	public double coûtReservation(Long idReservation) throws MyException {
 		// TODO Auto-generated method stub
 		return dao.coûtReservation(idReservation);
 	}
@@ -82,13 +82,13 @@ public class MetierReservationImplement implements IMetierReservation{
 	}
 
 	@Override
-	public List<Reservations> getReservationClient(Long idClient) {
+	public List<Reservations> getReservationClient(Long idClient) throws MyException {
 		// TODO Auto-generated method stub
 		return dao.getReservationClient(idClient);
 	}
 
 	@Override
-	public List<Reservations> getReservationChambre(Long idChambre) {
+	public List<Reservations> getReservationChambre(Long idChambre) throws MyException {
 		// TODO Auto-generated method stub
 		return dao.getReservationChambre(idChambre);
 	}

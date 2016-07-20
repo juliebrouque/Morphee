@@ -19,6 +19,7 @@ public interface IDaoFactures {
 	public void addReservationFacture(Long idReservation, Long idFacture);
 	public Factures getFacture(Long idFacture);
 	public List<Factures> getFactures(Long idClient);
-	public double getCoutAnnuelClient(int Année, Long idClient);
+	public double getCoutAnnuelClient(Long année, Long idClient);
 	public double getCoutSemestrielClient(Date dateDebut, Date dateFin, Long idClient);
+	public List<Factures> getAllFactures();
 }

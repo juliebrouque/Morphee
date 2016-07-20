@@ -81,30 +81,22 @@ public class DaoChambresImplement implements IDaoChambres {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Chambres> getchambresDisponibles(Date dateArrivee, Date dateSortie) {
-		List<Chambres>listeChambresDispo = new ArrayList<Chambres>();
+		List<Chambres>listeChambresDispo = getAllChambres();
 		List<Chambres> listeDesChambres =getAllChambres();
 		for (Chambres chambres : listeDesChambres) {
 			List<Reservations>listereservationParChambre=chambres.getTabReservationChambre();
-			if(listereservationParChambre.isEmpty()){
-				listeChambresDispo.add(chambres);
-			}else{
 			for (Reservations reservations : listereservationParChambre) {
-				if((reservations.getDateArrivee().before(dateArrivee) && reservations.getDateSortie().after(dateSortie)) 
-						|| (reservations.getDateArrivee().before(dateArrivee) && reservations.getDateSortie().after(dateSortie))){
-             	;
-		}else{
-			if(listeChambresDispo.contains(chambres.getIdChambre())){
-				;
-			}else{
-				listeChambresDispo.add(chambres);
+				if((reservations.getDateArrivee().before(dateArrivee) && reservations.getDateSortie().after(dateArrivee)) 
+    					|| (reservations.getDateArrivee().before(dateSortie) 
+    							&& reservations.getDateSortie().after(dateSortie)) 
+    							|| reservations.getDateArrivee().equals(dateArrivee) 
+    							|| reservations.getDateSortie().equals(dateSortie)
+    							|| (dateArrivee.before(reservations.getDateArrivee())
+    									&& dateSortie.after(reservations.getDateSortie()))){
+					listeChambresDispo.remove(chambres);
+				}     			
+	}	
 			}
-		}
-			
-			}
-			}
-		}
-				
 		return listeChambresDispo;
-	}
-		
+}
 }

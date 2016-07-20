@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
@@ -48,7 +49,7 @@ public class Personnes {
 	@JoinColumn(name="idHotel")
 	private Hotel hotelPersonne;
 	
-	@OneToMany(mappedBy="personne")
+	@OneToMany(mappedBy="personne",  cascade=CascadeType.ALL)
 	private List<Reservations> tabReservationPersonne=new ArrayList<Reservations>();
 	
 	//Constructors

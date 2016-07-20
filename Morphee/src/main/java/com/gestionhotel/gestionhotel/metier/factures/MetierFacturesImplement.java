@@ -52,7 +52,7 @@ public class MetierFacturesImplement implements IMetierFactures{
 	}
 
 	@Override
-	public double getCoutAnnuelClient(int Année, Long idClient) {
+	public double getCoutAnnuelClient(Long Année, Long idClient) {
 		// TODO Auto-generated method stub
 		return dao.getCoutAnnuelClient(Année, idClient);
 	}
@@ -68,6 +68,12 @@ public class MetierFacturesImplement implements IMetierFactures{
 	public Factures getFacture(Long idFacture) {
 		// TODO Auto-generated method stub
 		return dao.getFacture(idFacture);
+	}
+
+	@Override
+	public List<Factures> getAllFactures() {
+		// TODO Auto-generated method stub
+		return dao.getAllFactures();
 	}
 
 }
