@@ -1,9 +1,11 @@
 package com.gestionhotel.gestionhotel.dao.consommation;
 
+import java.util.List;
 import java.util.logging.Logger;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import com.gestionhotel.gestionhotel.entities.Consommation;
 import com.gestionhotel.gestionhotel.entities.Produits;
@@ -39,5 +41,13 @@ Logger log = Logger.getLogger("DaoConsommationImplement");
 		log.info("la consommation " + c.getIdConsommation()+ 
 				"avec le produit" + p.getIdProduit()+"a bien été enregistrée pour la réservation "+r.getIdReservation() );
 		return c;
+	}
+	@SuppressWarnings("unchecked")
+	public List<Consommation> getAllConsommation() {
+		Query query = em.createQuery("from Consommation ");
+		log.info("il existe" + query.getResultList().size()+"consommation");
+		return query.getResultList();	
+		
+		
 	}
 }

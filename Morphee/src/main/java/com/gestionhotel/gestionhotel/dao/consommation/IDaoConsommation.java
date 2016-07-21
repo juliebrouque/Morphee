@@ -1,5 +1,7 @@
 package com.gestionhotel.gestionhotel.dao.consommation;
 
+import java.util.List;
+
 import com.gestionhotel.gestionhotel.entities.Consommation;
 
 /**
@@ -11,4 +13,5 @@ public interface IDaoConsommation {
 
 	public Consommation addconsommationSachantProduit(Consommation c,
 			Long idProduit, Long idReservation);
+	public List<Consommation> getAllConsommation();
 }
