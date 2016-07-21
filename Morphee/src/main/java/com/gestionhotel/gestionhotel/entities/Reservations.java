@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -36,7 +37,7 @@ public class Reservations {
 	@Temporal(TemporalType.DATE)
 	private Date dateSortie;
 	
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.DETACH)
 	private Factures facture;
 	
 	@ManyToOne
@@ -47,7 +48,7 @@ public class Reservations {
 	@JoinColumn(name="idChambres")
 	private Chambres chambre;
 	
-	@OneToMany(mappedBy="reservation")
+	@OneToMany(mappedBy="reservation", cascade=CascadeType.ALL)
 	private List<Consommation> tabConsommationreservation=new ArrayList<Consommation>();
 	
 	//Constructors
