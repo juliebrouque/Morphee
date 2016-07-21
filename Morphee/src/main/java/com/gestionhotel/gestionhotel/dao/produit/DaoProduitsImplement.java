@@ -36,7 +36,7 @@ public class DaoProduitsImplement implements IDaoProduits {
 	}
 
 	@Override
-	public Produits updateChambre(Produits p) {
+	public Produits updateProduit(Produits p) {
 		em.merge(p);
 		log.info("le produit" + p.getIdProduit() + " " + "a bien été modifié");
 		return p;

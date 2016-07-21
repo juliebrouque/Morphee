@@ -12,7 +12,7 @@ import com.gestionhotel.gestionhotel.entities.Produits;
 public interface IMetierProduit {
 	public Produits	 addProduit(Produits p);
 	public Produits deleteProduit (Long idProduit);
-	public Produits updateChambre (Produits p);
+	public Produits updateProduit (Produits p);
 	public List<Produits> getAllProduits();
 	public Produits getProduitById (Long idProduit);
 

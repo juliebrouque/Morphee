@@ -37,8 +37,8 @@ public class MetierProduitsImplement implements IMetierProduit {
 	}
 
 	@Override
-	public Produits updateChambre(Produits p) {
-		return dao.updateChambre(p);
+	public Produits updateProduit(Produits p) {
+		return dao.updateProduit(p);
 	}
 
 	@Override

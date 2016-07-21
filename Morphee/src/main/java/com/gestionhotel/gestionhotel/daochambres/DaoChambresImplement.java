@@ -37,8 +37,11 @@ public class DaoChambresImplement implements IDaoChambres {
 
 
 	@Override
-	public Chambres addChambreSachantHotel(Chambres ch, Long idHotel) {
+	public Chambres addChambreSachantHotel(Chambres ch, Long idHotel) throws MyException {
 		Hotel h = em.find(Hotel.class, idHotel);
+		if (h==null) {
+			throw new MyException("L'id de l'hotel n'existe pas");
+		}
 		ch.setHotel(h);
 		em.persist(ch);
 		log.info("la chambre numéro:"+" "+ ch.getNumChambre()+"a bien été enregistrée");
@@ -47,8 +50,10 @@ public class DaoChambresImplement implements IDaoChambres {
 	}
 
 	@Override
-	public Chambres deleteChambre(Long idChambre) {
+	public Chambres deleteChambre(Long idChambre) throws MyException {
 		Chambres ch=em.find(Chambres.class, idChambre);
+		if(ch==null)
+			throw new MyException("L'id de la chambre n'existe pas");
 		em.remove(ch);
 		log.info("la chambre numéro:"+" "+ ch.getNumChambre()+"a bien été supprimée");
 		return ch;
@@ -94,9 +99,11 @@ public class DaoChambresImplement implements IDaoChambres {
     							|| (dateArrivee.before(reservations.getDateArrivee())
     									&& dateSortie.after(reservations.getDateSortie()))){
 					listeChambresDispo.remove(chambres);
+					log.info("il existe"+listeChambresDispo.size()+ "chambre disponibles");
 				}     			
 	}	
 			}
+		
 		return listeChambresDispo;
 }
 }

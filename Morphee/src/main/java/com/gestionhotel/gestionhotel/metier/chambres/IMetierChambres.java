@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.gestionhotel.gestionhotel.entities.Chambres;
+import com.gestionhotel.gestionhotel.exception.MyException;
 /**
  * 
  * @author inti0298
@@ -12,8 +13,8 @@ import com.gestionhotel.gestionhotel.entities.Chambres;
  *date: 11/07/2016
  */
 public interface IMetierChambres {
-	public Chambres addChambreSachantHotel(Chambres ch, Long idHotel);
-	public Chambres deleteChambre(Long idChambre);
+	public Chambres addChambreSachantHotel(Chambres ch, Long idHotel)throws MyException;
+	public Chambres deleteChambre(Long idChambre)throws MyException;
 	public Chambres updateChambre (Chambres ch);
 	public List<Chambres>getAllChambres();
 	public Chambres getChambreById(Long idChambre);

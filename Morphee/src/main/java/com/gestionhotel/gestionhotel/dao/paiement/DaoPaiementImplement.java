@@ -4,9 +4,9 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.logging.Logger;
 
-import javax.management.Query;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import com.gestionhotel.gestionhotel.entities.Client;
 import com.gestionhotel.gestionhotel.entities.Consommation;
@@ -29,7 +29,10 @@ public class DaoPaiementImplement implements IDaoPaiement {
 	private EntityManager em;
 	
 	@Override
-	public Paiements addPaiements(Paiements p) {
+	public Paiements addPaiements(Paiements p, Long idFacture) {
+		Factures f=em.find(Factures.class, idFacture);
+		p.setFacturePaiement(f);
+		em.merge(p.getFacturePaiement());
 		em.persist(p);
 		log.info("le paiement"+ p.getIdPaiement()+ " a bien été enregistré");
 		return p;
@@ -45,11 +48,12 @@ public class DaoPaiementImplement implements IDaoPaiement {
 	double coutConsommation=0;
 	double coutBenefAnnuel=0;
 	for (Consommation consommation : tabConsoParReservation) {
+		Long nbJours= (r.getDateSortie().getTime()-r.getDateArrivee().getTime())/(24*60*60*1000);
 		Calendar c = Calendar.getInstance(); 
 		c.setTime(f.getDateFacturation());
 		int year = c.get(Calendar.YEAR);
 		if(Annee==year){
-			coutchambre=r.getChambre().getPrixChambre();
+			coutchambre=coutchambre + (r.getChambre().getPrixChambre())*nbJours;
 			List<Consommation> tabCons=r.getTabConsommationreservation();
 			for(Consommation cons:tabCons){
 				coutConsommation= conso.getProduit().getPrixProduit();
@@ -59,6 +63,15 @@ public class DaoPaiementImplement implements IDaoPaiement {
 		coutBenefAnnuel =coutchambre+coutConsommation;
 		return coutBenefAnnuel;
 	}
+
+@SuppressWarnings("unchecked")
+@Override
+public List<Paiements> getAllPaiements() {
+	Query query = em.createQuery("From Paiements");
+	log.info("il exsite"+" "+ query.getResultList().size()+"paiements");
+	return query.getResultList();
+}
+
 
 	
 }

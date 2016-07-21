@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.gestionhotel.gestionhotel.daochambres.IDaoChambres;
 import com.gestionhotel.gestionhotel.entities.Chambres;
+import com.gestionhotel.gestionhotel.exception.MyException;
 /**
  * 
  * @author inti0298
@@ -29,12 +30,12 @@ public class MetierChambresImplement implements IMetierChambres{
 			}
 
 	@Override
-	public Chambres addChambreSachantHotel(Chambres ch, Long idHotel) {
+	public Chambres addChambreSachantHotel(Chambres ch, Long idHotel) throws MyException {
 		return dao.addChambreSachantHotel(ch, idHotel);
 	}
 
 	@Override
-	public Chambres deleteChambre(Long idChambre) {
+	public Chambres deleteChambre(Long idChambre)throws MyException {
 		return dao.deleteChambre(idChambre);
 	}
 
