@@ -52,9 +52,11 @@
             <li><a href="#Hotels" class="smoothScroll">Hotels</a></li>
 			<li> <a href="#Reservations" class="smoothScroll"> Reservations</a></li>
 			<li> <a href="#Chambres" class="smoothScroll"> Services</a></li>
-			<li> <a href="#Factures" class="smoothScroll"> Chambres</a></li>
-			<li> <a href="#Produits" class="smoothScroll"> Produits</a></li>
+			<li> <a href="getAllChambres" class="smoothScroll"> Chambres</a></li>
+			<li> <a href="getAllProduits" class="smoothScroll"> Produits</a></li>
 			<li> <a href="#Personnes" class="smoothScroll"> Personnes</a></li>
+			<li> <a href="HomePaiement" class="smoothScroll"> Paiement</a></li>
+			</ul>
         </div><!--/.nav-collapse -->
       </div>
     </div>
