@@ -9,6 +9,7 @@ package com.gestionhotel.gestionhotel.entities;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -36,7 +37,7 @@ public class Chambres {
 	@JoinColumn(name="idHotel")
 	private Hotel hotel;
 	
-	@OneToMany(mappedBy="chambre")
+	@OneToMany(mappedBy="chambre", cascade=CascadeType.ALL)
 	private List<Reservations> tabReservationChambre=new ArrayList<Reservations>();
 	
 	//Contructors 

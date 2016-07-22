@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.gestionhotel.gestionhotel.dao.paiement.IDaoPaiement;
 import com.gestionhotel.gestionhotel.entities.Paiements;
+import com.gestionhotel.gestionhotel.exception.MyException;
 /**
  * 
  * @author inti0298
@@ -29,7 +30,7 @@ public class MetierPaiementImplement implements IMetierPaiement {
 		}
 
 	@Override
-	public Paiements addPaiements(Paiements p, Long idFacture) {
+	public Paiements addPaiements(Paiements p, Long idFacture)throws MyException {
 		return dao.addPaiements(p, idFacture);
 	}
 

@@ -14,6 +14,7 @@ import com.gestionhotel.gestionhotel.entities.Factures;
 import com.gestionhotel.gestionhotel.entities.Paiements;
 import com.gestionhotel.gestionhotel.entities.Personnes;
 import com.gestionhotel.gestionhotel.entities.Reservations;
+import com.gestionhotel.gestionhotel.exception.MyException;
 /**
  * 
  * @author Zineb LAMRANI
@@ -29,9 +30,15 @@ public class DaoPaiementImplement implements IDaoPaiement {
 	private EntityManager em;
 	
 	@Override
-	public Paiements addPaiements(Paiements p, Long idFacture) {
+	public Paiements addPaiements(Paiements p, Long idFacture) throws MyException {
 		Factures f=em.find(Factures.class, idFacture);
+		if (f==null) {
+			throw new MyException("L'id facture n'existe pas");
+		}
 		p.setFacturePaiement(f);
+		if (p.getFacturePaiement().getIdFacture()==idFacture) {
+			throw new MyException("L'id facture possède déjà un paiement");
+		}
 		em.merge(p.getFacturePaiement());
 		em.persist(p);
 		log.info("le paiement"+ p.getIdPaiement()+ " a bien été enregistré");

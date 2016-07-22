@@ -18,10 +18,13 @@ import com.gestionhotel.gestionhotel.entities.Reservations;
 public class CoutBenefModel {
 	/*------------attributs----------*/
 	private Long idPaiement;
+	@NotNull(message="Sélectionner un id facture")
 	private Long idFacture;
+	@NotNull(message="Sélectionner un id réservation")
 	private Long idReservation;
+	@NotNull(message="Sélectionner un id consommation")
 	private Long idConsommation;
-	@NotNull(message="l'année est obligatoire")
+	@NotNull(message="Veuilles préciser une année")
 	private Integer annee;
     private Double coutBenefAnnuel;
     private List<Reservations> tabReservationExi;
